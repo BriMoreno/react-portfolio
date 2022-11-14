@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
     return (
         <header>
-            <h1>Olivia McKee</h1>
+            <h1>Britania Moreno</h1>
         </header>
     );
 }

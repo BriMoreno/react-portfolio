@@ -1,19 +1,17 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from "./components/Header"
-import Project from "./components/Project"
-import Footer from "./components/Footer"
-import About from "./components/About"
-import Contact from "./components/Contact"
-import Resume from "./components/Resume"
-import Navigation from "./components/Navigation"
+import Header from "./components/Header/header"
+import Project from "./pages/projects"
+import Footer from "./components/Footer/footer"
+import About from "./pages/about"
+import Contact from "./pages/contact"
+import Navigation from "./pages/navigation"
 
 function App() {
   const [categories] = useState([
     { name: "About Me" },
     { name: "Portfolio" },
     { name: "Contact" },
-    { name: "Resume" }
   ]);
 
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
@@ -32,7 +30,6 @@ function App() {
         {currentCategory === categories[0] && <About></About>}
         {currentCategory === categories[1] && <Project></Project>}
         {currentCategory === categories[2] && <Contact></Contact>}
-        {currentCategory === categories[3] && <Resume></Resume>}
       </div>
       <Footer></Footer>
     </div>
