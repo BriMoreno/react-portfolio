@@ -1,34 +1,41 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./styles/app.css";
-
-
-import Home from "./pages/home";
-import Contact from "./pages/contact";
-import About from "./pages/about";
-import Projects from "./pages/projects";
-import Header from "./components/header";
-import NavBar from "./components/navBar";
+import React, { useState } from 'react';
+import './App.css';
+import Header from "./components/Header"
+import Project from "./components/Project"
+import Footer from "./components/Footer"
+import About from "./components/About"
+import Contact from "./components/Contact"
+import Resume from "./components/Resume"
+import Navigation from "./components/Navigation"
 
 function App() {
+  const [categories] = useState([
+    { name: "About Me" },
+    { name: "Portfolio" },
+    { name: "Contact" },
+    { name: "Resume" }
+  ]);
+
+  const [currentCategory, setCurrentCategory] = useState(categories[0]);
+
   return (
-    <Router>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <NavBar />
-        <Header />
-        <div
-          className="container"
-        >
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-          </Routes>
-        </div>
+    <div id="app">
+      <div id="header">
+        <Header></Header>
+        <Navigation
+          categories={categories}
+          setCurrentCategory={setCurrentCategory}
+          currentCategory={currentCategory}
+        ></Navigation>
       </div>
-    </Router>
+      <div id="main">
+        {currentCategory === categories[0] && <About></About>}
+        {currentCategory === categories[1] && <Project></Project>}
+        {currentCategory === categories[2] && <Contact></Contact>}
+        {currentCategory === categories[3] && <Resume></Resume>}
+      </div>
+      <Footer></Footer>
+    </div>
   );
 }
 
